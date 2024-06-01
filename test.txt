@@ -1,0 +1,36 @@
+{
+    "user_id": 1,
+    "payment_info": "Credit Card",
+    "items": [
+     {
+           "id": 1,
+           "product": {
+               "id": 1,
+               "name": "Call of Duty Modern Warfare 2",
+               "description": "This product is under Activision license and branded with the partner of 'infinity ward' software to their respective purpose",
+               "price": "3500.00",
+             },
+           "quantity": 2
+      },
+      {
+           "id": 2,
+           "product": {
+               "id": 1,
+               "name": "Call of Duty Modern Warfare 2",
+               "description": "This product is under Activision license and branded with the partner of 'infinity ward' software to their respective purpose",
+               "price": "3500.00",
+             },
+           "quantity": 5
+       },
+      {
+           "id": 3,
+           "product": {
+               "id": 2,
+               "name": "Need For Speed Payback",
+               "description": "The game is licensed by 'EA games' with their all rights reserved",
+               "price": "2500.00",
+             },
+           "quantity": 3
+       }
+]
+}
