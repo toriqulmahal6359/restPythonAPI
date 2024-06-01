@@ -11,31 +11,35 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
 import environ
 import os
+import dj_database_url
 
 
-env = environ.Env(
-    # Set casting, default value
-    DEBUG=(bool, False)
-)
+# env = environ.Env(
+#     # Set casting, default value
+#     DEBUG=(bool, False)
+# )
 
 # Take environment variables from .env file
 # environ.Env.read_env()
 
 # Explicitly set the path to the .env file
-env_file_path = os.path.join(os.path.dirname(__file__), '.env')
+# env_file_path = os.path.join(os.path.dirname(__file__), '.env')
 
-if os.path.exists(env_file_path):
-    print(f"Loading environment variables from {env_file_path}")
-    environ.Env.read_env(env_file_path)
-else:
-    print(f".env file not found at {env_file_path}")
+# if os.path.exists(env_file_path):
+#     print(f"Loading environment variables from {env_file_path}")
+#     environ.Env.read_env(env_file_path)
+# else:
+#     print(f".env file not found at {env_file_path}")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+env = environ.Env()
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # static root access
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -53,7 +57,7 @@ print(f"ALLOWED_HOSTS: {env('ALLOWED_HOSTS', default=[])}")
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
