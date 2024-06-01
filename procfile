@@ -1,1 +1,1 @@
-echo "web: gunicorn myproject.wsgi --log-file -"
+echo "web: gunicorn restPythonAPI.wsgi --log-file -"
