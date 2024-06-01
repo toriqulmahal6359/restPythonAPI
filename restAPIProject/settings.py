@@ -11,21 +11,50 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import environ
+import os
+
+
+env = environ.Env(
+    # Set casting, default value
+    DEBUG=(bool, False)
+)
+
+# Take environment variables from .env file
+# environ.Env.read_env()
+
+# Explicitly set the path to the .env file
+env_file_path = os.path.join(os.path.dirname(__file__), '.env')
+
+if os.path.exists(env_file_path):
+    print(f"Loading environment variables from {env_file_path}")
+    environ.Env.read_env(env_file_path)
+else:
+    print(f".env file not found at {env_file_path}")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# static root access
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1u690^q_s6gqq=o%b*yp+g)(8r)s7f97!+x%u=!gobt2g!t327'
+
+print(f"SECRET_KEY: {env('SECRET_KEY', default='')}")
+print(f"DEBUG: {env('DEBUG', default=False)}")
+print(f"ALLOWED_HOSTS: {env('ALLOWED_HOSTS', default=[])}")
+
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 # Application definition
