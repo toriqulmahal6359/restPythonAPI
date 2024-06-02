@@ -1,67 +1,61 @@
-The API allows for managing orders, products, and order items.
+# Django REST API Project
 
-List Products: GET /api/products/
+## Overview
+This project is a RESTful API built using Django and Django REST framework. The API provides endpoints to manage resources efficiently and can be extended as per the application's requirements.
 
-Create Product: POST /api/products/
+## Features
+- User authentication and authorization
+- CRUD operations on various resources
+- Pagination, filtering, and sorting of results
+- Detailed API documentation
 
-Retrieve Product: GET /api/products/{id}/
+## Technologies Used
+- **Django**: High-level Python web framework
+- **Django REST framework**: Powerful and flexible toolkit for building Web APIs
+- **django-environ**: Environment variables for Django settings
+- **dj-database-url**: Utilizes the `DATABASE_URL` environment variable to configure the database
+- **gunicorn**: Python WSGI HTTP Server for UNIX
+- **psycopg2-binary**: PostgreSQL database adapter for Python
 
-Update Product: PUT /api/products/{id}/
+## Prerequisites
+- Python 3.x
+- PostgreSQL
+- pip (Python package installer)
 
-Partial Update Product: PATCH /api/products/{id}/
+## Setup
 
-Delete Product: DELETE /api/products/{id}/
+## Clone the Repository
 
-List Orders: GET /api/orders/
+- **Step 1**: git clone https://github.com/toriqulmahal6359/restPythonAPI.git
+- **Step 2**: cd https://github.com/toriqulmahal6359/restPythonAPI.git
+- **Step 3**: Open Terminal or CMD and run command 'pip install -r requirements.txt'
+- **Step 4**: Run 'python manage.py runserver' command
+- **Step 5**: It will direct to your default web-browser according to your setting
 
-Create Order: POST /api/orders/
+## Links for the API
 
-Retrieve Order: GET /api/orders/{id}/
+The API allows for managing orders, products, and order items and guide through you further process stepwise
 
-Update Order: PUT /api/orders/{id}/
+List Products: GET https://mahal-django-rest-api.onrender.com/api/products/
 
-Partial Update Order: PATCH /api/orders/{id}/
+Create Product: POST https://mahal-django-rest-api.onrender.com/api/products/
 
-Delete Order: DELETE /api/orders/{id}/
+Retrieve Product: GET https://mahal-django-rest-api.onrender.com/api/products/{id}/
 
-perl
-Copy code
+Update Product: PUT https://mahal-django-rest-api.onrender.com/api/products/{id}/
 
-### Step 3: Create API Documentation
+Partial Update Product: PATCH https://mahal-django-rest-api.onrender.com/api/products/{id}/
 
-You can use tools like Swagger or Postman to check the API. For Django, To do that you can use the `drf-yasg` package to generate Swagger documentation.
+Delete Product: DELETE https://mahal-django-rest-api.onrender.com/api/products/{id}/
 
-#### Using `drf-yasg` for API Documentation
+List Orders: GET https://mahal-django-rest-api.onrender.com/api/orders/
 
-1. **Install `drf-yasg`**:
-   ```sh pip install drf-yasg
+Create Order: POST https://mahal-django-rest-api.onrender.com/api/orders/
 
-Configure drf-yasg in urls.py:
+Retrieve Order: GET https://mahal-django-rest-api.onrender.com/api/orders/{id}/
 
-# myproject/urls.py
+Update Order: PUT https://mahal-django-rest-api.onrender.com/api/orders/{id}/
 
-from django.contrib import admin
-from django.urls import path, include
-from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
+Partial Update Order: PATCH https://mahal-django-rest-api.onrender.com/api/orders/{id}/
 
-schema_view = get_schema_view(
-    openapi.Info(
-        title="Orders API",
-        default_version='v1',
-        description="API documentation for Orders application",
-        terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="contact@orders.local"),
-        license=openapi.License(name="BSD License"),
-    ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
-)
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('orders.urls')),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
-]
+Delete Order: DELETE https://mahal-django-rest-api.onrender.com/api/orders/{id}/
